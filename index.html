@@ -1,202 +1,500 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="معرض أعمال Momen Nashat - برمجة وتصحيح أكواد وتطوير واجهات مواقع احترافية">
-<title>Momen Nashat | معرض الأعمال</title>
-<style>
-:root{
-  --bg:#080d18;--card:#101827;--card2:#0d1422;--text:#f5f7ff;--muted:#aab4c7;
-  --line:rgba(255,255,255,.09);--accent:#6c63ff;--accent2:#00d4ff;--ok:#20d69b;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Arial,Tahoma,sans-serif;background:
-  radial-gradient(circle at 85% 5%,rgba(108,99,255,.18),transparent 28%),
-  radial-gradient(circle at 10% 25%,rgba(0,212,255,.10),transparent 25%),var(--bg);
-  color:var(--text);line-height:1.8
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(1100px,92%);margin:auto}
-nav{position:sticky;top:0;z-index:20;background:rgba(8,13,24,.82);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
-.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:22px;font-weight:900}.logo span{color:var(--accent2)}
-.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}
-.navlinks a:hover{color:#fff}
-.hero{padding:90px 0 65px}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border:1px solid rgba(32,214,155,.3);background:rgba(32,214,155,.08);color:#72efc4;border-radius:999px;font-size:13px;margin-bottom:18px}
-h1{font-size:clamp(38px,6vw,68px);line-height:1.08;letter-spacing:-2px;margin-bottom:18px}
-.gradient{background:linear-gradient(90deg,#fff,#9fa9ff,#6de7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{font-size:18px;color:var(--muted);max-width:650px}
-.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{padding:13px 21px;border-radius:12px;font-weight:800;border:1px solid var(--line);display:inline-flex;align-items:center;gap:8px}
-.btn.primary{background:linear-gradient(135deg,var(--accent),#5148e8);border:0}
-.btn.secondary{background:rgba(255,255,255,.04)}
-.btn:hover{transform:translateY(-2px)}
-.hero-card{background:linear-gradient(145deg,rgba(108,99,255,.20),rgba(0,212,255,.08));border:1px solid var(--line);padding:25px;border-radius:24px;box-shadow:0 25px 80px rgba(0,0,0,.25)}
-.profile{display:flex;align-items:center;gap:15px;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.avatar{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:900;font-size:24px}
-.profile h3{font-size:20px}.profile small{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.stat{background:rgba(0,0,0,.16);padding:15px;border-radius:15px;text-align:center}.stat b{display:block;font-size:21px}.stat span{font-size:12px;color:var(--muted)}
-section{padding:65px 0}
-.section-title{margin-bottom:28px}.eyebrow{color:#7bdfff;font-weight:800;font-size:13px}.section-title h2{font-size:34px;margin:4px 0}.section-title p{color:var(--muted)}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.service,.project,.contact-box{background:rgba(16,24,39,.82);border:1px solid var(--line);border-radius:20px;padding:23px}
-.icon{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;background:rgba(108,99,255,.13);font-size:23px;margin-bottom:14px}
-.service p,.project p{color:var(--muted);font-size:14px}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.project-visual{height:205px;border-radius:15px;overflow:hidden;margin-bottom:18px;border:1px solid var(--line);background:#0a1020}
-.mock-header{height:34px;background:#171f32;display:flex;align-items:center;gap:6px;padding:0 12px}.dot{width:7px;height:7px;border-radius:50%;background:#69758c}
-.mock-body{padding:22px}.mock-line{height:11px;border-radius:10px;background:#27334b;margin-bottom:11px}.mock-line.w70{width:70%}.mock-line.w45{width:45%}.mock-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.mock-box{height:65px;border-radius:10px;background:linear-gradient(135deg,#26335b,#16263c)}
-.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.tag{font-size:11px;padding:5px 9px;background:rgba(108,99,255,.11);border:1px solid rgba(108,99,255,.18);border-radius:999px;color:#bfc5ff}
-.before-after{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.ba{height:70px;border-radius:10px;display:grid;place-items:center;font-size:12px;color:#d6dbea}.before{background:#252a35}.after{background:linear-gradient(135deg,#283a70,#173a4b)}
-.contact{background:linear-gradient(135deg,rgba(108,99,255,.18),rgba(0,212,255,.08));border:1px solid var(--line);border-radius:25px;padding:35px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
-.contact p{color:var(--muted)}.phone{font-size:24px;font-weight:900;direction:ltr;display:inline-block;margin-top:10px}
-footer{padding:30px 0;border-top:1px solid var(--line);color:#7f8ba0;text-align:center;font-size:13px}
-.note{font-size:12px;color:#748197;margin-top:13px}
-@media(max-width:800px){
- .hero-grid,.contact{grid-template-columns:1fr}.services,.projects{grid-template-columns:1fr}.navlinks{display:none}
- .hero{padding-top:55px}section{padding:45px 0}h1{letter-spacing:-1px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="قاع القرش — اختبر مستواك في عالم الأغنياء اللي بيتخانقوا على حاجات ملهاش لازمة 😂">
+  <title>قاع القرش 🦈 | اللعبة</title>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      color: #f5f7fb;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(0, 180, 255, .18), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(255, 193, 7, .12), transparent 25%),
+        linear-gradient(145deg, #030914, #071525 55%, #020711);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(960px, calc(100% - 28px));
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: .3px;
+    }
+
+    .tag {
+      color: #9fb2c9;
+      font-size: 13px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 52px 10px 30px;
+    }
+
+    .shark {
+      font-size: 70px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 72px);
+      margin: 8px 0 12px;
+      line-height: 1;
+    }
+
+    .hero p {
+      color: #bdc9d8;
+      font-size: clamp(16px, 3vw, 20px);
+      max-width: 680px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    .start-btn, .next-btn, .restart-btn {
+      border: 0;
+      cursor: pointer;
+      color: #06101c;
+      font-size: 18px;
+      font-weight: 900;
+      padding: 15px 28px;
+      border-radius: 16px;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #ffd95a, #ffab24);
+      box-shadow: 0 12px 30px rgba(255, 174, 38, .22);
+      transition: .2s;
+    }
+
+    button:hover { transform: translateY(-2px); }
+    button:active { transform: translateY(0); }
+
+    .game {
+      display: none;
+      padding: 18px 0 55px;
+    }
+
+    .progress-area {
+      margin-bottom: 18px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      color: #9fb2c9;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .progress {
+      height: 9px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #26c6da, #ffd54f);
+      transition: width .35s ease;
+    }
+
+    .card {
+      background: rgba(10, 24, 42, .86);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 28px;
+      padding: clamp(22px, 5vw, 42px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .question-number {
+      color: #ffd45c;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: clamp(23px, 5vw, 35px);
+      line-height: 1.55;
+      margin: 0 0 25px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 12px;
+    }
+
+    .answer {
+      width: 100%;
+      text-align: right;
+      color: #eef4fb;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.11);
+      padding: 16px 18px;
+      border-radius: 16px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .answer:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,213,79,.55);
+    }
+
+    .answer.selected {
+      background: rgba(255, 196, 60, .16);
+      border-color: #ffd54f;
+    }
+
+    .next-wrap {
+      text-align: center;
+      min-height: 72px;
+    }
+
+    .next-btn { display: none; }
+
+    .result {
+      display: none;
+      text-align: center;
+      padding: 55px 0 70px;
+    }
+
+    .result-card {
+      background: rgba(10, 24, 42, .9);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 28px;
+      padding: 40px 24px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.3);
+    }
+
+    .result-icon { font-size: 72px; }
+    .result h2 {
+      font-size: clamp(28px, 6vw, 46px);
+      margin: 12px 0;
+    }
+
+    .score {
+      color: #ffd54f;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 10px 0 20px;
+    }
+
+    .result p {
+      color: #c3cfdd;
+      line-height: 1.9;
+      max-width: 650px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    footer {
+      text-align: center;
+      color: #687b91;
+      padding: 10px 0 30px;
+      font-size: 13px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 35px; }
+      .card { border-radius: 22px; }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="wrap">
+    <header>
+      <div class="logo">🦈 قاع القرش</div>
+      <div class="tag">لعبة مالهاش أي لازمة… وده المطلوب 😂</div>
+    </header>
 
-<nav>
-  <div class="container nav">
-    <a class="logo" href="#">Momen<span>.</span></a>
-    <div class="navlinks">
-      <a href="#about">عني</a><a href="#services">الخدمات</a><a href="#work">أعمالي</a><a href="#contact">تواصل معي</a>
-    </div>
-    <a class="btn primary" href="https://khamsat.com/user/momennashat" target="_blank" rel="noopener">اطلب خدمتي</a>
-  </div>
-</nav>
+    <main>
+      <section class="hero" id="home">
+        <div class="shark">🦈</div>
+        <h1>اختبر مستواك في قاع القرش</h1>
+        <p>
+          هنا عالم تاني… ناس معاها فلوس لدرجة إن أكبر مشاكلهم:
+          مين حجز الترابيزة اللي تمنها أكتر؟ ومين اتضايق عشان القهوة اتقدمت في الكوباية الغلط؟ 😂
+        </p>
+        <button class="start-btn" onclick="startGame()">🎮 ابدأ اللعبة</button>
+      </section>
 
-<main>
-<section class="hero" id="about">
-  <div class="container hero-grid">
-    <div>
-      <div class="badge">● متاح لاستقبال المشاريع</div>
-      <h1>أحوّل فكرتك إلى <span class="gradient">موقع احترافي</span></h1>
-      <p>أنا <strong>Momen Nashat</strong>، أعمل في برمجة وتطوير واجهات المواقع، تصحيح الأكواد، وتحسين صفحات الويب لتكون سريعة ومتجاوبة مع الموبايل والكمبيوتر.</p>
-      <div class="buttons">
-        <a class="btn primary" href="#work">شاهد أعمالي ↓</a>
-        <a class="btn secondary" href="https://wa.me/201010142013" target="_blank" rel="noopener">💬 تواصل واتساب</a>
-      </div>
-      <div class="note">جميع النماذج المعروضة هنا نماذج توضيحية لأعمال الويب والخدمات التي أقدمها.</div>
-    </div>
-    <div class="hero-card">
-      <div class="profile">
-        <div class="avatar">MN</div>
-        <div><h3>Momen Nashat</h3><small>Web Developer • Front-End</small></div>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>HTML</b><span>واجهات</span></div>
-        <div class="stat"><b>CSS</b><span>تصميم</span></div>
-        <div class="stat"><b>JS</b><span>تفاعل</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="services">
-<div class="container">
-  <div class="section-title"><span class="eyebrow">ماذا أقدم؟</span><h2>خدماتي</h2><p>حلول عملية تناسب أصحاب المشاريع والأعمال الحرة.</p></div>
-  <div class="services">
-    <div class="service"><div class="icon">💻</div><h3>تطوير صفحات الويب</h3><p>إنشاء صفحات حديثة ومتجاوبة تعمل بشكل جيد على الهاتف والكمبيوتر.</p></div>
-    <div class="service"><div class="icon">🛠️</div><h3>تصحيح الأخطاء</h3><p>فحص الأكواد وإصلاح مشاكل HTML وCSS وJavaScript وتحسين سلوك الصفحة.</p></div>
-    <div class="service"><div class="icon">🎨</div><h3>تحسين الواجهة</h3><p>تنسيق الواجهات وترتيب العناصر وإضافة لمسات احترافية وتجربة استخدام أفضل.</p></div>
-  </div>
-</div>
-</section>
-
-<section id="work">
-<div class="container">
-  <div class="section-title"><span class="eyebrow">Portfolio</span><h2>نماذج من أعمالي</h2><p>نماذج توضيحية لأسلوب العمل والتصميم.</p></div>
-  <div class="projects">
-
-    <article class="project">
-      <div class="project-visual">
-        <div class="mock-header"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-        <div class="mock-body">
-          <div class="mock-line w45"></div><div class="mock-line w70"></div>
-          <div class="mock-boxes"><div class="mock-box"></div><div class="mock-box"></div><div class="mock-box"></div></div>
+      <section class="game" id="game">
+        <div class="progress-area">
+          <div class="progress-info">
+            <span id="progressText">السؤال 1 من 10</span>
+            <span id="percent">0%</span>
+          </div>
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
         </div>
-      </div>
-      <h3>Landing Page احترافية</h3>
-      <p>تصميم صفحة هبوط عصرية لعرض خدمة أو منتج مع دعوات واضحة للتواصل.</p>
-      <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div>
-    </article>
 
-    <article class="project">
-      <div class="project-visual">
-        <div class="mock-header"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-        <div class="mock-body">
-          <div class="mock-line w70"></div>
-          <div class="before-after"><div class="ba before">قبل — واجهة غير مرتبة</div><div class="ba after">بعد — واجهة محسّنة</div></div>
-          <div class="mock-line w45" style="margin-top:13px"></div>
+        <div class="card">
+          <div class="question-number" id="questionNumber">السؤال 1</div>
+          <h2 class="question" id="question"></h2>
+          <div class="answers" id="answers"></div>
+
+          <div class="next-wrap">
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">التالي ➜</button>
+          </div>
         </div>
-      </div>
-      <h3>تصحيح وتحسين واجهة</h3>
-      <p>إعادة ترتيب العناصر ومعالجة مشاكل العرض وتحسين تجربة المستخدم.</p>
-      <div class="tags"><span class="tag">Bug Fixing</span><span class="tag">UI</span><span class="tag">CSS</span></div>
-    </article>
+      </section>
 
-    <article class="project">
-      <div class="project-visual">
-        <div class="mock-header"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-        <div class="mock-body">
-          <div class="mock-line w45"></div><div class="mock-line w70"></div>
-          <div class="mock-boxes"><div class="mock-box"></div><div class="mock-box"></div><div class="mock-box"></div></div>
+      <section class="result" id="result">
+        <div class="result-card">
+          <div class="result-icon" id="resultIcon">🦈</div>
+          <h2 id="resultTitle"></h2>
+          <div class="score" id="resultScore"></div>
+          <p id="resultText"></p>
+          <button class="restart-btn" onclick="restartGame()">🔄 العب تاني</button>
         </div>
-      </div>
-      <h3>موقع متجاوب للموبايل</h3>
-      <p>بناء واجهة تتكيف تلقائياً مع أحجام الشاشات المختلفة بدون كسر التصميم.</p>
-      <div class="tags"><span class="tag">Mobile</span><span class="tag">Desktop</span><span class="tag">HTML/CSS</span></div>
-    </article>
+      </section>
+    </main>
 
-    <article class="project">
-      <div class="project-visual">
-        <div class="mock-header"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-        <div class="mock-body">
-          <div class="mock-line w45"></div>
-          <div class="mock-line w70"></div>
-          <div class="before-after"><div class="ba before">كود يحتاج إصلاح</div><div class="ba after">كود منظم ومحسّن</div></div>
-        </div>
-      </div>
-      <h3>مراجعة وإصلاح الأكواد</h3>
-      <p>مراجعة ملفات الموقع واكتشاف المشاكل وإجراء التعديلات المطلوبة بدقة.</p>
-      <div class="tags"><span class="tag">JavaScript</span><span class="tag">Debugging</span><span class="tag">Optimization</span></div>
-    </article>
-
+    <footer>
+      قاع القرش © 2026 — الضحك مجاني… أما الحساب فمش عندنا 😂
+    </footer>
   </div>
-</div>
-</section>
 
-<section id="contact">
-<div class="container">
-  <div class="contact">
-    <div>
-      <span class="eyebrow">جاهز للعمل</span>
-      <h2>عندك مشروع أو مشكلة في كود؟</h2>
-      <p>أرسل التفاصيل وسأساعدك في تنفيذ المطلوب أو إصلاح المشكلة.</p>
-      <div class="phone">01010142013</div>
-    </div>
-    <div class="buttons">
-      <a class="btn primary" href="https://wa.me/201010142013" target="_blank" rel="noopener">واتساب</a>
-      <a class="btn secondary" href="https://khamsat.com/user/momennashat" target="_blank" rel="noopener">حسابي على خمسات</a>
-    </div>
-  </div>
-</div>
-</section>
-</main>
+  <script>
+    const questions = [
+      {
+        q: "صحيت الصبح ولقيت إن العربية اتغسلت بنوع مياه أقل جودة من المعتاد… تعمل إيه؟",
+        a: [
+          ["تطلب غسيلها تاني فوراً", 3],
+          ["تسأل مين المسؤول عن الكارثة", 2],
+          ["تضحك وتقول معلش", 0],
+          ["تبيع العربية من الزعل", 4]
+        ]
+      },
+      {
+        q: "اتنين من أصحابك اتخانقوا ساعة كاملة… السبب؟",
+        a: [
+          ["مين يقعد في الكرسي اليمين", 2],
+          ["مين دفع الحساب آخر مرة", 1],
+          ["مين القهوة بتاعته وصلت الأول", 3],
+          ["مفيش سبب مفهوم أصلاً", 4]
+        ]
+      },
+      {
+        q: "لقيت فاتورة مطعم فيها 7 أرقام، إيه أول رد فعل؟",
+        a: [
+          ["أحسبها بالآلة الحاسبة", 1],
+          ["أقول للنادل: فيه صفر زيادة؟", 0],
+          ["أقول تمام وحطها على الحساب", 4],
+          ["أسأل هل الفاتورة تشمل المطعم نفسه؟", 3]
+        ]
+      },
+      {
+        q: "حد قالك: العربية الجديدة لونها مش عاجبني…",
+        a: [
+          ["نغير اللون", 4],
+          ["نشتري واحدة تانية", 5],
+          ["نقوله اللون حلو وخلاص", 1],
+          ["نفتح اجتماع عائلي لمناقشة الأزمة", 3]
+        ]
+      },
+      {
+        q: "إيه أكتر جملة ممكن تسمعها في قاع القرش؟",
+        a: [
+          ["مفيش مشكلة", 0],
+          ["المشكلة إن الشاليه التاني بعيد", 4],
+          ["هنطلب أكل منين؟", 1],
+          ["مين خد الريموت؟", 2]
+        ]
+      },
+      {
+        q: "صاحبك زعلان لأن الفندق حط له وسادة مش مريحة…",
+        a: [
+          ["أقوله نام من غيرها", 0],
+          ["نطلب وسادة جديدة", 2],
+          ["نغير الفندق كله", 4],
+          ["نرفع الموضوع لمجلس الأمن… بتاع الفندق 😂", 5]
+        ]
+      },
+      {
+        q: "لقيت إن فاتورة القهوة زادت 50 جنيه…",
+        a: [
+          ["أغير الكافيه", 3],
+          ["أشربها برضه", 0],
+          ["أشتكي للإدارة", 2],
+          ["أشتري الكافيه", 5]
+        ]
+      },
+      {
+        q: "لو صاحبك قالك: أنا محتار أجيب يخت أبيض ولا أوف وايت…",
+        a: [
+          ["أقوله الأبيض أشيك", 2],
+          ["أقوله هات الاتنين", 5],
+          ["أقوله خد وقتك في التفكير", 1],
+          ["أمشي وأسيبه يفكر", 0]
+        ]
+      },
+      {
+        q: "مين أكتر شخص فاهم نظام قاع القرش؟",
+        a: [
+          ["اللي بيحل المشاكل", 0],
+          ["اللي بيعمل المشكلة أصلاً", 4],
+          ["اللي بيتفرج من بعيد", 1],
+          ["اللي عنده اجتماع عشان يقرر هيعمل إيه", 3]
+        ]
+      },
+      {
+        q: "آخر سؤال: لو اختلفت مع صاحبك على حاجة تافهة جداً، هتعمل إيه؟",
+        a: [
+          ["أضحك ونقفل الموضوع", 0],
+          ["أثبت له إني صح لمدة ساعتين", 2],
+          ["أعمل اجتماع رسمي", 3],
+          ["أشتري الحاجة اللي اختلفنا عليها وخلاص", 5]
+        ]
+      }
+    ];
 
-<footer>
-  <div class="container">© 2026 Momen Nashat — Web Developer</div>
-</footer>
+    let current = 0;
+    let total = 0;
+    let selected = false;
+
+    const home = document.getElementById("home");
+    const game = document.getElementById("game");
+    const result = document.getElementById("result");
+    const question = document.getElementById("question");
+    const answers = document.getElementById("answers");
+    const questionNumber = document.getElementById("questionNumber");
+    const progressText = document.getElementById("progressText");
+    const percent = document.getElementById("percent");
+    const progressBar = document.getElementById("progressBar");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function startGame() {
+      current = 0;
+      total = 0;
+      home.style.display = "none";
+      result.style.display = "none";
+      game.style.display = "block";
+      window.scrollTo({top: 0, behavior: "smooth"});
+      showQuestion();
+    }
+
+    function showQuestion() {
+      selected = false;
+      const item = questions[current];
+      questionNumber.textContent = "السؤال " + (current + 1);
+      progressText.textContent = `السؤال ${current + 1} من ${questions.length}`;
+      const pct = Math.round((current / questions.length) * 100);
+      percent.textContent = pct + "%";
+      progressBar.style.width = pct + "%";
+      question.textContent = item.q;
+      answers.innerHTML = "";
+      nextBtn.style.display = "none";
+
+      item.a.forEach((option) => {
+        const btn = document.createElement("button");
+        btn.className = "answer";
+        btn.textContent = option[0];
+        btn.onclick = () => chooseAnswer(btn, option[1]);
+        answers.appendChild(btn);
+      });
+    }
+
+    function chooseAnswer(button, points) {
+      if (selected) return;
+      selected = true;
+      total += points;
+
+      document.querySelectorAll(".answer").forEach(b => b.disabled = true);
+      button.classList.add("selected");
+      nextBtn.style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      if (!selected) return;
+
+      current++;
+
+      if (current >= questions.length) {
+        showResult();
+      } else {
+        showQuestion();
+        window.scrollTo({top: 0, behavior: "smooth"});
+      }
+    }
+
+    function showResult() {
+      game.style.display = "none";
+      result.style.display = "block";
+      progressBar.style.width = "100%";
+
+      const max = 50;
+      const ratio = total / max;
+
+      let icon, title, text;
+
+      if (ratio < 0.22) {
+        icon = "😇";
+        title = "لسه برّه قاع القرش";
+        text = "أنت شخص طبيعي جداً… بتشوف المشكلة التافهة وبتقول: يا جماعة نكبر دماغنا 😂. حاول تفضل كده، بس خد بالك… القاع ممكن يناديك.";
+      } else if (ratio < 0.45) {
+        icon = "😎";
+        title = "على أول السلم";
+        text = "بدأت تفهم لغة القاع، لكن لسه عندك ذرة عقل تمنعك من شراء حاجة جديدة لمجرد إن القديمة لونها مش عاجبك.";
+      } else if (ratio < 0.7) {
+        icon = "🤑";
+        title = "عضو محترم في قاع القرش";
+        text = "أنت خلاص فهمت القاعدة: أي مشكلة صغيرة ممكن تتحول لمشروع ضخم جداً… خصوصاً لو فيها فاتورة طويلة.";
+      } else if (ratio < 0.88) {
+        icon = "🦈";
+        title = "قرش من العيار الثقيل";
+        text = "أنت لا تبحث عن حل للمشكلة… أنت تبحث عن طريقة تجعل المشكلة أغلى 😂. واضح إنك بدأت تتأقلم مع الحياة في القاع.";
+      } else {
+        icon = "👑🦈";
+        title = "أنت مدير قاع القرش";
+        text = "مبروك! وصلت لمستوى نادر جداً. عندك قدرة خارقة على تحويل أبسط موقف إلى أزمة فاخرة، وبكل هدوء تقول: مش مهم السعر… المهم الراحة 😂.";
+      }
+
+      document.getElementById("resultIcon").textContent = icon;
+      document.getElementById("resultTitle").textContent = title;
+      document.getElementById("resultScore").textContent = `نتيجتك: ${total} من ${max}`;
+      document.getElementById("resultText").textContent = text;
+
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+
+    function restartGame() {
+      startGame();
+    }
+  </script>
 </body>
 </html>
